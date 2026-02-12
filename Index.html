@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <!-- ===== META TAGS CRÍTICOS PARA RESPONSIVE ===== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="theme-color" content="#00005B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <title>Internet Guardian · CEFODIPF · Modo Móvil</title>
+    
+    <!-- Fuentes Google optimizadas para móvil -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET Y VARIABLES RESPONSIVE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent; /* Elimina el flash azul en móviles */
+        }
+
+        html {
+            font-size: 16px; /* Base para rem */
+            -webkit-text-size-adjust: 100%; /* Evita que iOS ajuste el texto */
+        }
+
+        body {
+            background: linear-gradient(145deg, #00005B 0%, #1a1f7a 100%);
+            min-height: 100vh;
+            min-height: -webkit-fill-available; /* Soporte para Safari móvil */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            font-family: 'Open Sans Semi Condensed', 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .game-container {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(199, 185, 252, 0.18);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 4px solid #C7B9FC;
+            border-radius: 40px;
+            box-shadow: 0 25px 40px rgba(0,0,0,0.7);
+            padding: 20px;
+            
+            /* Mejoras táctiles */
+            transition: all 0.2s ease;
+        }
+
+        /* ===== HEADER INSTITUCIONAL 100% RESPONSIVE ===== */
+        .institution-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #00005B;
+            border-radius: 50px;
+            padding: 12px 18px;
+            margin-bottom: 15px;
+            border: 3px solid #FFD617;
+            box-shadow: 0 6px 0 #00003a;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .logo-placeholder {
+            background: linear-gradient(145deg, #3D8AFF, #1f53a0);
+            width: 70px;
+            height: 70px;
+            min-width: 60px; /* Evita que se encoja demasiado */
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #D2FFFC;
+            color: white;
+            font-weight: bold;
+            font-size: 0.75rem;
+            text-align: center;
+            padding: 6px;
+            box-shadow: inset 0 0 12px #C7B9FC;
+        }
+
+        .logo-placeholder div:first-child {
+            font-size: 2rem;
+        }
+
+        .cefodipf-title {
+            text-align: center;
+            color: #D2FFFC;
+            font-size: 2rem;
+            font-weight: 800;
+            background: #00005B;
+            padding: 8px 16px;
+            border-radius: 40px;
+            border: 2px solid #FFD617;
+            letter-spacing: 1px;
+            font-family: 'Montserrat', sans-serif;
+            flex: 1; /* Ocupa espacio disponible */
+            min-width: 200px;
+        }
+
+        /* ===== MASCOTA Y DOCENTE RESPONSIVE ===== */
+        .mascot-docente {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            background: #00005B;
+            padding: 10px 18px;
+            border-radius: 50px;
+            border: 3px solid #3D8AFF;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .mascot-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #00005B;
+            padding: 5px 15px;
+            border-radius: 40px;
+            border: 2px dashed #C7B9FC;
+            flex-wrap: wrap;
+        }
+
+        .mascot-placeholder {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, #FFD617, #f0b500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            border: 3px solid white;
+            box-shadow: 0 0 20px #FFD617;
+        }
+
+        .teacher {
+            color: #00005B;
+            font-weight: 800;
+            font-size: 0.95rem;
+            background: #FFD617;
+            padding: 8px 18px;
+            border-radius: 40px;
+            border: 3px solid #D2FFFC;
+            transition: all 0.2s;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #b39800;
+            font-family: 'Montserrat', sans-serif;
+            white-space: nowrap;
+        }
+
+        /* ===== PANTALLAS ===== */
+        .screen {
+            background: rgba(199, 185, 252, 0.15);
+            border-radius: 30px;
+            padding: 20px;
+            color: white;
+            border: 3px solid #3D8AFF;
+            backdrop-filter: blur(8px);
+            transition: 0.2s;
+        }
+
+        /* ===== WELCOME SCREEN RESPONSIVE ===== */
+        .welcome-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: rgba(0,0,91,0.7);
+        }
+
+        .game-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #FFD617, #D2FFFC);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px #3D8AFF;
+            margin-bottom: 5px;
+            font-family: 'Open Sans Semi Condensed', sans-serif;
+            line-height: 1.1;
+        }
+
+        .input-field {
+            width: 100%;
+            max-width: 400px;
+            padding: 14px 20px;
+            border-radius: 50px;
+            border: 4px solid #3D8AFF;
+            background: #00005B;
+            color: #D2FFFC;
+            font-size: 1.1rem;
+            text-align: center;
+            margin: 15px 0;
+            outline: none;
+            font-weight: 600;
+        }
+
+        /* ===== TARJETAS DE PERFIL - GRID RESPONSIVE ===== */
+        .profile-selection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .profile-card {
+            background: #00005B;
+            border: 3px solid #3D8AFF;
+            border-radius: 25px;
+            padding: 18px 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 6px 0 #000036;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-3px);
+            border-color: #FFD617;
+            box-shadow: 0 9px 0 #000036;
+        }
+
+        .profile-card.selected {
+            border: 4px solid #FFD617;
+            background: #001a4d;
+            box-shadow: 0 0 20px #FFD617;
+        }
+
+        .profile-icon {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        .profile-name {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #FFD617;
+            margin-bottom: 8px;
+        }
+
+        .profile-time {
+            font-size: 1rem;
+            color: #D2FFFC;
+            margin-bottom: 8px;
+        }
+
+        .profile-difficulty {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            width: 100%;
+        }
+
+        /* ===== GAMEPLAY SCREEN RESPONSIVE ===== */
+        .gameplay-screen {
+            display: none;
+            padding: 15px;
+        }
+
+        .stats-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            background: #00005B;
+            padding: 15px;
+            border-radius: 40px;
+            margin-bottom: 15px;
+            border: 3px solid #FFD617;
+            color: #D2FFFC;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .stats-panel > div {
+            text-align: center;
+            padding: 8px 12px;
+            border-radius: 30px;
+            background: #3D8AFF;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* ===== TEMPORIZADOR RESPONSIVE ===== */
+        .timer-container {
+            background: #00005B;
+            border-radius: 40px;
+            padding: 12px 18px;
+            margin-bottom: 15px;
+            border: 2px solid #3D8AFF;
+        }
+
+        .timer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            color: #D2FFFC;
+            font-size: 0.95rem;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .profile-badge {
+            background: #FFD617;
+            color: #00005B;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .timer-bar-container {
+            width: 100%;
+            height: 16px;
+            background: #001a24;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid #C7B9FC;
+        }
+
+        /* ===== CASO FORENSE - TEXTO RESPONSIVE ===== */
+        .scenario-card {
+            background: #00005BCC;
+            border-radius: 30px;
+            padding: 18px;
+            border-left: 10px solid #FFD617;
+            border-right: 3px solid #3D8AFF;
+            margin-bottom: 15px;
+            box-shadow: 0 6px 0 #00003a;
+        }
+
+        .scenario-text {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            background: #0f1570;
+            padding: 18px;
+            border-radius: 25px;
+            margin-bottom: 18px;
+            border: 2px solid #C7B9FC;
+            font-weight: 600;
+            color: #D2FFFC;
+            font-style: italic;
+            border-left: 8px solid #FFD617;
+            word-break: break-word;
+        }
+
+        /* ===== OPCIONES - GRID RESPONSIVE ===== */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .option-btn {
+            background: #3D8AFF;
+            border: 2px solid #D2FFFC;
+            color: white;
+            padding: 14px 8px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 18px;
+            border-bottom: 5px solid #00005B;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.1s;
+            font-family: 'Open Sans Semi Condensed', sans-serif;
+            word-break: break-word;
+            line-height: 1.3;
+        }
+
+        .option-btn:active {
+            transform: scale(0.96);
+            background: #5f9eff;
+        }
+
+        /* ===== BOTONES DE NAVEGACIÓN RESPONSIVE ===== */
+        .navigation-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+            background: #00005BCC;
+            padding: 12px 18px;
+            border-radius: 50px;
+            border: 3px solid #C7B9FC;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: #3D8AFF;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 40px;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-bottom: 4px solid #00005B;
+            cursor: pointer;
+            transition: 0.07s;
+            box-shadow: 0 5px 0 #000036;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex: 1 1 auto;
+            justify-content: center;
+            min-width: 120px;
+        }
+
+        .nav-btn.small {
+            padding: 10px 14px;
+            font-size: 0.85rem;
+            min-width: 100px;
+        }
+
+        .nav-btn:active {
+            transform: translateY(2px);
+            border-bottom-width: 2px;
+            box-shadow: 0 2px 0 #000036;
+        }
+
+        /* ===== RECUADRO FORENSE RESPONSIVE ===== */
+        .security-info-box {
+            background: #00005B;
+            border-radius: 25px;
+            padding: 18px;
+            margin: 15px 0 10px;
+            border: 3px solid #FFD617;
+            box-shadow: 0 0 20px #C7B9FC;
+            color: #D2FFFC;
+            max-height: 300px;
+            overflow-y: auto;
+            font-size: 0.95rem;
+        }
+
+        .peligro-titulo {
+            color: #FFD617;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #FFD617;
+            padding-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .medidas-lista {
+            padding-left: 20px;
+            margin-top: 12px;
+            font-size: 0.9rem;
+        }
+
+        .medidas-lista li {
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        /* ===== CERTIFICADO RESPONSIVE ===== */
+        .certificate-area {
+            background: linear-gradient(145deg, #00005B, #020246);
+            border-radius: 30px;
+            padding: 15px;
+            margin-top: 15px;
+            border: 4px double #FFD617;
+        }
+
+        .certificate-content {
+            background: #D2FFFC;
+            padding: 15px;
+            border-radius: 20px;
+            color: #00005B;
+            border: 4px solid #C7B9FC;
+        }
+
+        .feedback-msg {
+            font-size: 1.1rem;
+            padding: 12px;
+            border-radius: 30px;
+            text-align: center;
+            background: #00005BCC;
+            margin-top: 12px;
+            font-weight: 700;
+            border: 2px solid #FFD617;
+            word-break: break-word;
+        }
+
+        .lives span {
+            font-size: 1.4rem;
+            color: #FFD617;
+        }
+
+        /* ===== MEDIA QUERIES - PUNTOS DE QUIEBRE ESPECÍFICOS ===== */
+        
+        /* MÓVILES PEQUEÑOS (menos de 400px) */
+        @media (max-width: 400px) {
+            html { font-size: 14px; }
+            .game-container { padding: 12px; }
+            .game-title { font-size: 1.8rem; }
+            .cefodipf-title { font-size: 0.8rem; padding: 6px 10px; }
+            .options-grid { grid-template-columns: 1fr; }
+            .profile-selection { grid-template-columns: 1fr; }
+            .stats-panel { grid-template-columns: 1fr; }
+            .nav-btn { min-width: 100%; }
+            .navigation-bar { flex-direction: column; }
+        }
+
+        /* MÓVILES MEDIANOS (401px - 600px) */
+        @media (min-width: 401px) and (max-width: 600px) {
+            html { font-size: 15px; }
+            .game-title { font-size: 2rem; }
+            .options-grid { grid-template-columns: 1fr; }
+            .profile-selection { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* TABLETS (601px - 900px) */
+        @media (min-width: 601px) and (max-width: 900px) {
+            html { font-size: 16px; }
+            .profile-selection { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* PANTALLAS GRANDES (901px+) */
+        @media (min-width: 901px) {
+            .profile-selection { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        /* AJUSTES PARA PANTALLAS MUY PEQUEÑAS (altura) */
+        @media (max-height: 700px) {
+            .game-container { padding: 12px; }
+            .institution-header { padding: 8px 12px; }
+            .logo-placeholder { width: 55px; height: 55px; }
+            .mascot-placeholder { width: 40px; height: 40px; font-size: 1.8rem; }
+            .scenario-text { font-size: 0.95rem; padding: 12px; }
+            .security-info-box { max-height: 200px; }
+        }
+
+        /* ORIENTACIÓN HORIZONTAL EN MÓVILES */
+        @media (max-height: 500px) and (orientation: landscape) {
+            body { padding: 8px; }
+            .game-container { padding: 10px; }
+            .institution-header { display: none; } /* Oculto en landscape para ahorrar espacio */
+            .mascot-docente { margin-bottom: 10px; }
+            .scenario-text { font-size: 0.9rem; padding: 10px; }
+            .options-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* MEJORAS TÁCTILES */
+        @media (hover: none) and (pointer: coarse) {
+            .option-btn, .nav-btn, .profile-card, .btn {
+                min-height: 48px; /* Área táctil mínima recomendada */
+            }
+            
+            .option-btn {
+                padding: 16px 8px;
+            }
+            
+            /* Eliminar efectos hover en móviles */
+            .profile-card:hover {
+                transform: none;
+            }
+            
+            .option-btn:hover {
+                transform: none;
+                background: #3D8AFF;
+            }
+        }
+
+        /* ===== UTILIDADES ===== */
+        .hide-mobile {
+            @media (max-width: 600px) {
+                display: none;
+            }
+        }
+        
+        .text-center { text-align: center; }
+        .w-100 { width: 100%; }
+    </style>
+</head>
+<body>
+<div class="game-container">
+
+    <!-- ===== HEADER INSTITUCIONAL RESPONSIVE ===== -->
+    <div class="institution-header">
+        <div class="logo-placeholder">
+            <div><img src="./cefodipf.PNG" height="60px"></div>
+            <!-- <div style="font-weight:bold; color:#D2FFFC;">CEFODIPF</div>
+            <div style="font-size:0.6rem;">PADRE FANTINO</div> -->
+        </div>
+        <div class="cefodipf-title">
+            CENTRO DE FORMACIÓN Y DESARROLLO INTEGRAL PADRE FANTINO
+        </div>
+        <div class="logo-placeholder" style="background:#c5d9f7;">
+            <div><img src="./Minerd a.png" height="60px"></div>
+            <!-- <div style="font-size:0.6rem; color:#FFD617;">MINERD</div>
+            <div style="font-size:0.5rem;">EDUCACIÓN</div> -->
+        </div>
+    </div>
+
+    <!-- ===== MASCOTA Y DOCENTE RESPONSIVE ===== -->
+    <div class="mascot-docente">
+        <div class="mascot-area">
+            <div class="mascot-placeholder"><img src="./Mascota.png" height="60px"></div>
+            <div style="color: #FFD617; font-weight: 800; font-size: 2rem;">SEMANA DEL INTERNET SEGURO</div>
+        </div>
+        <div class="teacher" id="teacherEffect">👨‍🏫 ING. EMILIO ALMONTE</div>
+    </div>
+
+    <!-- ===== PANTALLA DE BIENVENIDA ===== -->
+    <div id="welcomeScreen" class="screen welcome-screen">
+        <div style="font-size: 3.5rem; margin-bottom: 0;">🛡️🌐</div>
+        <h1 class="game-title">INTERNET GUARDIAN</h1>
+        <p style="color: #D2FFFC; font-size: 1.1rem; margin-bottom: 5px; font-weight: 600;">40 Casos Forenses Reales</p>
+        
+        <input type="text" id="playerName" class="input-field" placeholder="Tu nombre, ciberdetective" maxlength="25">
+        
+        <!-- TARJETAS DE PERFIL - GRID RESPONSIVE -->
+        <div style="color: #FFD617; font-size: 1.1rem; font-weight: 700; margin: 5px 0;">SELECCIONA TU PERFIL</div>
+        <div class="profile-selection">
+            <!-- Perfil Infantil -->
+            <div id="profileChild" class="profile-card" onclick="selectProfile('child')">
+                <div class="profile-icon">🧸</div>
+                <div class="profile-name">INFANTIL</div>
+                <div class="profile-time">⏱️ 60 segundos</div>
+                <div class="profile-difficulty" style="background: #88ccff; color: #00005B;">🟢 MUY SUAVE</div>
+                <div style="color: #D2FFFC; margin-top: 8px; font-size: 0.9rem;">Puntos: 80</div>
+            </div>
+            <!-- Perfil Estudiante -->
+            <div id="profileStudent" class="profile-card" onclick="selectProfile('student')">
+                <div class="profile-icon">🧑‍🎓</div>
+                <div class="profile-name">ESTUDIANTE</div>
+                <div class="profile-time">⏱️ 45 segundos</div>
+                <div class="profile-difficulty difficulty-student">🟢 SUAVE</div>
+                <div style="color: #D2FFFC; margin-top: 8px; font-size: 0.9rem;">Puntos: 100</div>
+            </div>
+            <!-- Perfil Padre/Madre -->
+            <div id="profileParent" class="profile-card" onclick="selectProfile('parent')">
+                <div class="profile-icon">👪</div>
+                <div class="profile-name">PADRE/MADRE</div>
+                <div class="profile-time">⏱️ 20 segundos</div>
+                <div class="profile-difficulty difficulty-parent">🟡 MODERADO</div>
+                <div style="color: #D2FFFC; margin-top: 8px; font-size: 0.9rem;">Puntos: 150</div>
+            </div>
+            <!-- Perfil Docente -->
+            <div id="profileTeacher" class="profile-card" onclick="selectProfile('teacher')">
+                <div class="profile-icon">👨‍🏫</div>
+                <div class="profile-name">DOCENTE</div>
+                <div class="profile-time">⏱️ 15 segundos</div>
+                <div class="profile-difficulty difficulty-teacher">🔴 CRÍTICO</div>
+                <div style="color: #D2FFFC; margin-top: 8px; font-size: 0.9rem;">Puntos: 250</div>
+            </div>
+        </div>
+        
+        <button id="startGameBtn" class="btn" disabled>🚀 INICIAR INVESTIGACIÓN</button>
+        <p style="color: #C7B9FC; margin-top: 15px; font-size: 0.85rem;">40 casos · Tiempo según perfil · Bonus por rapidez</p>
+    </div>
+
+    <!-- ===== PANTALLA DE JUEGO ===== -->
+    <div id="gameplayScreen" class="screen gameplay-screen">
+        
+        <!-- ESTADÍSTICAS RESPONSIVE -->
+        <div class="stats-panel">
+            <div style="background: #3D8AFF;" id="playerNameDisplay">👤 Detective:</div>
+            <div style="background: #FFD617; color: #00005B;" id="scoreDisplay">💰 0 pts</div>
+            <div class="lives">❤️ <span id="livesDisplay">❤️❤️❤️</span></div>
+            <div style="background: #3D8AFF;" id="levelDisplay">NIVEL 1/8</div>
+        </div>
+
+        <!-- TEMPORIZADOR RESPONSIVE -->
+        <div class="timer-container">
+            <div class="timer-header">
+                <div><span class="profile-badge" id="profileBadge">🧸 INFANTIL</span></div>
+                <div id="timerDisplay">⏱️ 60s</div>
+                <div id="pointsMultiplier">🎯 80 pts</div>
+            </div>
+            <div class="timer-bar-container">
+                <div id="timerBar" class="timer-bar" style="width: 100%;"></div>
+            </div>
+        </div>
+
+        <!-- CASO FORENSE -->
+        <div class="scenario-card">
+            <div id="scenarioMessage" class="scenario-text">
+                Cargando caso forense...
+            </div>
+            <div id="optionsContainer" class="options-grid"></div>
+            <div id="feedbackMessage" class="feedback-msg"></div>
+        </div>
+
+        <!-- BOTONES DE NAVEGACIÓN RESPONSIVE -->
+        <div class="navigation-bar">
+            <button id="nextLevelBtn" class="nav-btn" disabled>⏩ SIGUIENTE</button>
+            <button id="restartGameBtn" class="nav-btn small" style="background:#FFD617; color:#00005B;">🔄 REINICIAR</button>
+            <button id="backToWelcomeBtn" class="nav-btn small" style="background:#C7B9FC; color:#00005B;">🏠 MENÚ</button>
+        </div>
+
+        <!-- ANÁLISIS FORENSE -->
+        <div id="securityBox" class="security-info-box">
+            <div class="peligro-titulo">
+                <span>🔍</span> <span id="peligroNombre">Diagnóstico del caso</span>
+            </div>
+            <div id="peligroDescripcionCorta" style="font-size: 0.95rem; margin-bottom: 12px; color:#D2FFFC; font-weight: 600; background: #001a24; padding: 10px; border-radius: 12px;">
+                Selecciona una respuesta para ver el análisis.
+            </div>
+            <div style="border-left: 4px solid #FFD617; padding-left: 12px;">
+                <strong style="color: #FFD617;">📋 EXPLICACIÓN:</strong>
+                <p id="explicacionCaso" style="margin-top: 6px; margin-bottom: 10px; font-size: 0.9rem;"></p>
+            </div>
+            <div style="margin-top: 12px;">
+                <strong style="color: #FFD617;">🛡️ MEDIDAS:</strong>
+                <ul id="medidasLista" class="medidas-lista"></ul>
+            </div>
+        </div>
+
+        <!-- CERTIFICADO -->
+        <div id="certificateContainer" class="certificate-area">
+            <div class="certificate-content">
+                <div style="font-size: 2.5rem;">🏅🔍</div>
+                <h2 style="color: #00005B; font-size: 1.6rem;">CERTIFICADO</h2>
+                <div style="border-top: 2px solid #FFD617; border-bottom: 2px solid #FFD617; padding: 12px; margin: 12px 0;">
+                    <p style="font-size: 1.1rem; font-weight: bold;">Otorgado a:</p>
+                    <p id="certificatePlayerName" style="font-size: 1.6rem; font-weight: 900; color: #3D8AFF;"></p>
+                    <p id="certificateProfile" style="font-size: 1rem; color: #00005B;"></p>
+                    <p style="font-size: 0.95rem;">40 casos forenses</p>
+                </div>
+                <div style="font-size: 0.8rem;">Docente: Ing. Emilio Almonte · MINERD</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ===== PERFILES CON TIEMPOS AJUSTADOS PARA ESTUDIANTES PEQUEÑOS =====
+    const PERFILES = {
+        child: { 
+            nombre: "INFANTIL", 
+            icono: "🧸", 
+            tiempoMaximo: 60, 
+            puntosBase: 80, 
+            dificultad: "🟢 MUY SUAVE", 
+            color: "#88ccff" 
+        },
+        student: { 
+            nombre: "ESTUDIANTE", 
+            icono: "🧑‍🎓", 
+            tiempoMaximo: 45,    // Aumentado de 30 a 45 segundos
+            puntosBase: 100, 
+            dificultad: "🟢 SUAVE", 
+            color: "#00aa88" 
+        },
+        parent: { 
+            nombre: "PADRE/MADRE", 
+            icono: "👪", 
+            tiempoMaximo: 20, 
+            puntosBase: 150, 
+            dificultad: "🟡 MODERADO", 
+            color: "#ffaa00" 
+        },
+        teacher: { 
+            nombre: "DOCENTE", 
+            icono: "👨‍🏫", 
+            tiempoMaximo: 15, 
+            puntosBase: 250, 
+            dificultad: "🔴 CRÍTICO", 
+            color: "#ff4444" 
+        }
+    };
+
+    // ===== 40 CASOS FORENSES (misma base de datos descriptiva) =====
+    const casosDB = [
+        // NIVEL 1 - PHISHING Y FAKE NEWS (5 casos)
+        { nivel: 1, situacion: "⚠️ CASO #001: Son las 8:00 AM y recibes un mensaje de texto. El remitente dice ser 'Banco Popular' y el mensaje alerta: 'DETECTAMOS UN CARGO DE $15,000 EN UNA JOYERÍA. Si no fue usted, verifique aquí: https://popular-seguridad.xyz'. El enlace tiene el logo del banco y te piden tu clave de acceso.", peligro: "Phishing", explicacion: "Este es un ataque de phishing bancario. Los estafadores crean páginas web casi idénticas a las del banco real. La URL 'popular-seguridad.xyz' es falsa (los bancos dominicanos usan .com.do). El mensaje de urgencia busca que actúes sin pensar. Si ingresas tu clave, los delincuentes la capturan y vacían tu cuenta en minutos.", medidas: "• NUNCA hagas clic en enlaces bancarios por SMS.\n• Los bancos no piden claves por mensaje.\n• Verifica siempre la URL: debe ser .com.do\n• Llama al número que está detrás de tu tarjeta.\n• Reenvía SMS sospechosos al 7726 (gratuito)." },
+        { nivel: 1, situacion: "⚠️ CASO #002: Tu abuela te muestra un mensaje en WhatsApp que le llegó: 'GOBIERNO DOMINICANO ENTREGA BONO DE $25,000. Regístrate aquí: bono-rd.com'. El mensaje tiene el logo del Palacio Nacional y dice que es solo hoy. Tu abuela ya hizo clic y le piden su número de cédula.", peligro: "Phishing", explicacion: "Es una estafa de suplantación de identidad gubernamental. Usan el nombre del gobierno para robar datos personales. Los bonos reales se tramitan en ventanillas únicas o páginas oficiales .gob.do, nunca por SMS masivos. Al dar su cédula, los estafadores pueden solicitar préstamos a su nombre.", medidas: "• Explícale a tu abuela que es falso.\n• Los sitios del gobierno dominicano terminan en .gob.do\n• No existen bonos por SMS.\n• Ayuda a adultos mayores a identificar estafas.\n• Reporta el número como spam." },
+        { nivel: 1, situacion: "⚠️ CASO #003: En el grupo familiar de WhatsApp, tu tío comparte una noticia: '¡URGENTE! HOY DAN POLLO GRATIS EN PLAZA LAMBADA. LLEVA TU CÉDULA Y RECOGES 2 POLLOS. COMPARTE PARA QUE TODOS SEPAN'. El mensaje tiene cientos de reenvíos y fotos de personas haciendo fila (pero son fotos de hace 3 años).", peligro: "Fake News", explicacion: "Es un bulo recurrente en República Dominicana. Cada cierto tiempo aparece esta cadena. No hay tal regalo de pollos. Las fotos son de eventos pasados o de otros países. El objetivo es que compartas masivamente, generando tráfico o recopilando números activos.", medidas: "• Verifica en páginas oficiales del centro comercial.\n• Busca la noticia en Google + 'falso'.\n• No compartas cadenas sin confirmar.\n• Explica a tu familia cómo identificar bulos.\n• Desconfía de 'comparte para que todos sepan'." },
+        { nivel: 1, situacion: "⚠️ CASO #004: Te llega un correo de 'NETFLIX': 'Tu suscripción ha sido cancelada. Actualiza tu método de pago para seguir viendo. HAZ CLIC AQUÍ: netflix-rd.com/actualizar'. El correo tiene el logo exacto de Netflix y dice que si no actualizas en 24 horas perderás tu cuenta.", peligro: "Phishing", explicacion: "Es phishing de suscripciones. Netflix nunca envía correos pidiendo hacer clic en enlaces para actualizar pagos. La URL 'netflix-rd.com' es falsa (Netflix usa netflix.com). Al ingresar tus datos, los estafadores toman tu tarjeta de crédito y hacen compras.", medidas: "• No hagas clic en el enlace.\n• Ve directamente a netflix.com desde tu navegador.\n• Revisa el remitente: Netflix usa @netflix.com\n• Activa la verificación en dos pasos.\n• Si ya ingresaste datos, bloquea tu tarjeta YA." },
+        { nivel: 1, situacion: "⚠️ CASO #005: Una amiga te reenvía un mensaje: '¡ALERTA! Están secuestrando niños en Santo Domingo. Los delincuentes usan una camioneta blanca. COMPARTE PARA SALVAR VIDAS'. No hay fecha, no hay ubicación exacta, no hay fuentes policiales. Solo un texto que da miedo.", peligro: "Fake News", explicacion: "Es una cadena de pánico. Circula en distintos países cambiando el vehículo y la ciudad. No hay denuncias formales. Estas cadenas generan histeria colectiva y linchamientos injustos. La policía pide NO compartir información no confirmada.", medidas: "• Busca en cuentas oficiales de la Policía Nacional.\n• Si no hay boletín oficial, es falso.\n• No contribuyas al pánico.\n• Comparte solo información verificada.\n• Denuncia cadenas de odio." },
+        // NIVEL 2 - GROOMING Y SEXTING (5 casos)
+        { nivel: 2, situacion: "⚠️ CASO #006: Llevas 3 semanas jugando Among Us online. Conociste a 'Sofia_13', te cae bien. Hoy te pidió que nos cambiemos a WhatsApp porque 'el chat del juego es muy público'. Te envió una foto: es una chica linda de tu edad. Te dice que le gustas y te pide una foto tuya.", peligro: "Grooming", explicacion: "ES GROOMING. Esa foto probablemente es de una víctima real o una imagen robada de internet. Los groomers construyen confianza lentamente, se ganan tu amistad y luego piden fotos. El cambio a WhatsApp es una táctica: es más privado y difícil de rastrear.", medidas: "• No le envíes fotos.\n• No te cambies a WhatsApp.\n• Bloquea el contacto AHORA.\n• Guarda el nombre de usuario.\n• Cuéntaselo a tus padres o un adulto." },
+        { nivel: 2, situacion: "⚠️ CASO #007: Tu pareja te dice: 'Si de verdad confías en mí, envíame una foto sin ropa. Solo para mí, te lo juro. ¿Acaso no me amas?'. Llevan 1 mes juntos y te presiona mucho. Te sientes incómodo pero no quieres que se enoje.", peligro: "Sexting", explicacion: "Es presión para sexting. El amor NO se demuestra con fotos íntimas. Quien te ama respeta tus límites. Aunque esa persona sea confiable, los celulares se hackean, se pierden, o la relación termina. Esa foto puede ser usada para chantaje sexual (sextorsión).", medidas: "• Tienes derecho a decir NO.\n• No lo hagas aunque insistan.\n• Una vez enviada, pierdes el control.\n• Las fotos íntimas son para siempre.\n• Si te presiona, no es amor." },
+        { nivel: 2, situacion: "⚠️ CASO #008: En Instagram, 'Diego_23' te empieza a seguir. Te dice que eres muy bonita y que quiere conocerte. Tiene fotos de un chico guapo. Te ofrece regalarte un iPhone si le envías fotos 'especiales'. Te pide que no le digas a tus papás porque 'es una sorpresa'.", peligro: "Grooming", explicacion: "Es grooming con oferta económica. Los depredadores usan regalos para ganarse a menores. Nadie regala iPhones a cambio de fotos. La petición de 'secreto' es la bandera roja MÁS PELIGROSA: quieren aislarte para que nadie te proteja.", medidas: "• Bloquea y denuncia el perfil.\n• Los perfiles falsos usan fotos robadas.\n• No aceptes regalos de desconocidos.\n• Si te ofrece cosas, es manipulación.\n• Cuéntaselo a tus padres YA." },
+        { nivel: 2, situacion: "⚠️ CASO #009: Un chico que te gusta te pide que le reenvíes una foto íntima que te mandó su ex. 'Está buenísima, ella ya no me interesa, pero quiero tenerla'. La foto está en tu chat porque él te la reenvió antes. Te dice que solo es para él.", peligro: "Sexting", explicacion: "Reenviar fotos íntimas de otras personas SIN CONSENTIMIENTO es violencia digital. En República Dominicana, la Ley 53-07 lo castiga. Si la persona es menor de edad, estás distribuyendo pornografía infantil, aunque tú también seas menor. Es DELITO.", medidas: "• NO reenvíes la foto.\n• Elimínala de tu chat.\n• Explícale que es ilegal.\n• Respetar la intimidad es responsabilidad tuya.\n• No participes en estas cadenas." },
+        { nivel: 2, situacion: "⚠️ CASO #010: En un foro de anime, 'Kaito_14' te escribe a menudo. Dice tener 15 años y vivir en Santiago. Saben mucho de tu vida porque se lo has contado. Hoy te pidió tu dirección 'para enviarte un regalo de cumpleaños'. Insiste mucho.", peligro: "Grooming", explicacion: "Es grooming con recolección de datos. Primero ganan tu confianza, luego piden datos personales. La dirección es peligrosísima: un adulto podría presentarse en tu casa. Los groomers son pacientes: pueden esperar meses para obtener lo que quieren.", medidas: "• NUNCA des tu dirección.\n• No aceptes 'regalos' de desconocidos.\n• Puede que no sea quien dice ser.\n• Bloquea el contacto.\n• Si ya diste tu dirección, avisa a tus padres." },
+        // NIVEL 3 - CIBERACOSO Y ADICCIÓN (5 casos)
+        { nivel: 3, situacion: "⚠️ CASO #011: Tus compañeros crearon un perfil falso en Instagram con tus fotos. Publican cosas hirientes: 'soy el más feo de la clase', 'nadie me quiere'. Etiquetan a todos tus amigos. Han creado un meme de ti y se ríen en el recreo. Ya van 3 semanas.", peligro: "Ciberacoso", explicacion: "Es ciberacoso con suplantación de identidad. No es una broma: es hostigamiento continuo. El objetivo es humillarte, aislarte y dañar tu autoestima. El silencio te hace sentir solo, pero los acosadores se sienten más poderosos cuando no hay consecuencias.", medidas: "• Captura TODO con pantallazos.\n• Denuncia el perfil en Instagram.\n• HABLA: con tus padres, con orientación.\n• No es tu culpa. No respondas.\n• La escuela DEBE tomar medidas." },
+        { nivel: 3, situacion: "⚠️ CASO #012: Son las 3 AM. Dijiste 'solo 5 minutos' hace 4 horas. Sigues viendo videos en TikTok. Tus ojos arden, mañana tienes examen de matemáticas y no has estudiado. Tus padres te han dicho que apagues el celular. No puedes parar.", peligro: "Adicción a redes sociales", explicacion: "Es adicción a redes sociales. Las plataformas están diseñadas por ingenieros conductuales para ser adictivas. El 'scroll infinito' y los videos cortos generan micro-dopamina constante. No es falta de voluntad: es explotación de tu atención.", medidas: "• Activa 'Bienestar Digital' en tu celular.\n• Pon límite de 1 hora en TikTok.\n• Deja el cargador fuera del cuarto.\n• Lee un libro físico antes de dormir.\n• Sin pantallas 1 hora antes de acostarte." },
+        { nivel: 3, situacion: "⚠️ CASO #013: Han creado un grupo de Telegram llamado 'ODIO A [TU NOMBRE]'. Hay 30 personas de tu escuela. Publican fotos tuyas editadas grotescamente, tu número de teléfono y dicen cosas horribles. Te llegó la invitación de un número desconocido.", peligro: "Ciberacoso", explicacion: "Es ciberacoso grupal organizado. La creación de grupos específicos para destruir a una persona es una forma GRAVE de acoso. Publicar tu número telefónico es delito (Ley 53-07, Artículo 10). El silencio de los miembros los hace cómplices.", medidas: "• Denuncia el grupo en Telegram.\n• Captura los nombres de los participantes.\n• INFORMA A LA POLICÍA (es delito).\n• Tu familia debe poner la denuncia.\n• Busca apoyo psicológico." },
+        { nivel: 3, situacion: "⚠️ CASO #014: Juegas Free Fire 8 horas diarias. Has dejado el baloncesto que te gustaba. Tus amigos te invitan a salir y dices que 'estás ocupado'. Tus notas han bajado de 90 a 65. Cuando pierdes, le gritas a tu mamá. Después te sientes culpable.", peligro: "Adicción a videojuegos", explicacion: "Es adicción a videojuegos con síntomas claros: pérdida de control, abandono de actividades, bajo rendimiento escolar, irritabilidad. La OMS lo reconoce como trastorno de salud mental. No es 'vicio', es una condición que necesita tratamiento.", medidas: "• Establece horarios fijos (máx 2h/día).\n• Entrega el celular a tus padres al dormir.\n• Vuelve al baloncesto.\n• Si no puedes controlarlo, busca ayuda.\n• No estás solo, hay terapia especializada." },
+        { nivel: 3, situacion: "⚠️ CASO #015: En TikTok, un video tuyo se hizo viral... pero es un video editado donde pusieron tu cara en un cuerpo haciendo cosas obscenas. Los comentarios son crueles. Decenas de personas que ni conoces se burlan. Tienes miedo de ir a la escuela.", peligro: "Ciberacoso", explicacion: "Es ciberacoso con deepfake básico. Usaron tu rostro para crear contenido humillante. Esto es violencia digital. No es tu culpa. El daño se multiplica exponencialmente en redes. La vergüenza no debe ser tuya, es de quienes crearon y comparten ese contenido.", medidas: "• Reporta el video en TikTok.\n• No lo compartas ni lo comentes.\n• Captura la URL y los datos.\n• Denuncia ante la policía.\n• Recuerda: TU VALOR no lo define un video." },
+        // NIVEL 4 - MALWARE Y ESTAFAS (5 casos)
+        { nivel: 4, situacion: "⚠️ CASO #016: Quieres editar videos como tus youtubers favoritos. Buscas 'Adobe Premiere Pro gratis' y encuentras un video de YouTube que te manda a 'mediafire.com/archivo-premiere'. Descargas e instalas. Ahora tu computadora tiene una barra de herramientas extraña y aparecen anuncios cada 2 minutos.", peligro: "Malware", explicacion: "Descargaste adware y posiblemente un troyano. Los programas 'crackeados' o 'gratis' son la principal fuente de malware. El atacante gana dinero con los anuncios y puede estar robando tus contraseñas. Nunca es gratis: pagas con tu seguridad.", medidas: "• Ejecuta análisis completo con Windows Defender.\n• Desinstala programas sospechosos.\n• Descarga SOLO de sitios oficiales.\n• Usa DaVinci Resolve (es GRATIS y legal).\n• Formatea si es necesario." },
+        { nivel: 4, situacion: "⚠️ CASO #017: Te llega un mensaje: 'FELICIDADES! GANASTE UN IPHONE 15. Solo paga RD$1,500 por envío y manejo. Promoción exclusiva para tus seguidores'. Te piden depositar en una cuenta de ahorros del Banco Popular a nombre de 'Carlos Méndez'.", peligro: "Estafa", explicacion: "Es una estafa de premios falsos. Los iPhones no se regalan, menos pagando envío. Las cuentas de ahorros personales son de los estafadores. Depositas y desaparecen. Luego te pedirán más: 'impuestos', 'seguro', etc. Nunca verás el teléfono.", medidas: "• Nadie regala iPhones.\n• Los sorteos legítimos tienen bases legales.\n• No deposites en cuentas personales.\n• Desconfía de 'exclusivo para ti'.\n• Bloquea el número." },
+        { nivel: 4, situacion: "⚠️ CASO #018: Tu mamá busca 'descargar música gratis' en Google. Entra a un sitio que dice 'YouTube a MP3 - Rápido y Seguro'. Aparece un mensaje gigante: '¡TU ANDROID TIENE 7 VIRUS! LIMPIA AHORA'. El mensaje vibra y hace sonidos de alarma. Tu mamá está asustada.", peligro: "Scareware", explicacion: "Es scareware (software de miedo). Es una táctica de ingeniería social. Tu teléfono NO tiene virus. Las páginas de conversión de YouTube son conocidas por estas alertas falsas. El botón 'Limpia ahora' instala malware real o te suscribe a servicios de SMS premium.", medidas: "• NO hagas clic en la alerta.\n• Cierra la pestaña.\n• Explica a tu mamá que es falso.\n• Los antivirus reales no aparecen en webs.\n• Usa apps oficiales como Spotify." },
+        { nivel: 4, situacion: "⚠️ CASO #019: 'Hola, te escribo de Amazon RD. Necesitamos confirmar tu compra de una laptop de $45,000. Si no fuiste tú, cancela aquí: [enlace].' No compraste nada. El correo viene de 'amazon-rd@gmail.com' y tiene faltas de ortografía: 'celular' está escrito 'celualr'.", peligro: "Phishing", explicacion: "Es phishing. Amazon dominicano no existe como tienda directa, y nunca usa Gmail. Las faltas de ortografía son pistas. Quieren que entres en pánico por una compra cara que no hiciste. Al hacer clic, te roban datos de tarjeta.", medidas: "• Revisa el remitente: @gmail.com es falso.\n• Las faltas de ortografía son señal de estafa.\n• No hagas clic.\n• Ve directo a amazon.com.\n• Activa 2FA." },
+        { nivel: 4, situacion: "⚠️ CASO #020: 'Oferta de trabajo: Asistente virtual. $25,000 semanales. Desde casa. Solo necesitas depositar $500 como garantía de confianza. Cupo limitado'. Llevas semanas buscando empleo y esto suena increíble. Te piden depositar en Western Union.", peligro: "Estafa laboral", explicacion: "Es estafa de empleo falso. Ningún trabajo legítimo te pide dinero para empezar. Los $25,000 semanales son irreales (serían $100,000 mensuales, más que un gerente). Western Union es el método favorito de estafadores porque es anónimo e irreversible.", medidas: "• No pagues por trabajar.\n• Investiga la empresa.\n• Salarios muy altos sin experiencia = ESTAFA.\n• Los reclutamientos reales no piden depósitos.\n• Denuncia la oferta." },
+        // NIVEL 5 - PRIVACIDAD Y DEPREDADORES (5 casos)
+        { nivel: 5, situacion: "⚠️ CASO #021: Acabas de recibir tu cédula por primera vez. Estás orgulloso, le tomas foto y la subes a Instagram Stories. Se ve claramente tu nombre completo, número de cédula, fecha de nacimiento y tu firma. Lo ven tus 1,500 seguidores.", peligro: "Pérdida de privacidad", explicacion: "Has expuesto TU IDENTIDAD COMPLETA. Con tu número de cédula y firma, los delincuentes pueden: abrir cuentas bancarias, solicitar préstamos, comprar celulares a plazos, suplantarte en trámites. Tu firma es digitalizable. Estás en riesgo.", medidas: "• ELIMINA LA HISTORIA AHORA MISMO.\n• NUNCA subas fotos de documentos.\n• Usa stickers para tapar datos.\n• Monitorea tu buró de crédito.\n• Si ves movimientos extraños, denuncia." },
+        { nivel: 5, situacion: "⚠️ CASO #022: Un perfil con fotos de un modelo fitness te empieza a dar like en todas tus fotos. Te escribe: 'Eres muy linda. Soy cazatalentos de una agencia de modelos. Te veo potencial. ¿Te gustaría hacer una sesión de fotos? Es en mi estudio privado. No le digas a tus padres, a veces son sobreprotectores'.", peligro: "Depredadores", explicacion: "Es un depredador usando el señuelo del modelaje. Los cazatalentos legítimos tienen oficinas, página web, contratos formales y trabajan con padres de familia. La petición de 'no se lo digas a tus padres' es para aislarte y que nadie te proteja. Es extremadamente peligroso.", medidas: "• NO contestes.\n• BLOQUEA el perfil.\n• Denuncia en Instagram.\n• HABLA con tus padres.\n• Los verdaderos profesionales no piden secretos." },
+        { nivel: 5, situacion: "⚠️ CASO #023: Descargas una app de linterna porque la de fábrica no es potente. Al instalarla, la app pide acceso a: tus contactos, ubicación, cámara, micrófono y almacenamiento. Aceptas para que funcione rápido. Luego ves anuncios raros y tu batería se agota en 2 horas.", peligro: "Exposición de datos", explicacion: "Una linterna NO necesita contactos, cámara ni micrófono. Es una app espía. Está recopilando tu agenda (para estafar a tus contactos), tu ubicación (para saber dónde vives), tu cámara (puede tomar fotos sin que sepas). Estás siendo vigilado.", medidas: "• DESINSTALA la app AHORA.\n• Revisa permisos de tus apps.\n• Si pide más de lo necesario, NO LA INSTALES.\n• Usa la linterna nativa del celular.\n• En Android, revisa 'permisos especiales'." },
+        { nivel: 5, situacion: "⚠️ CASO #024: Publicas en Facebook: '¡AL FIN VACACIONES! Me voy a Punta Cana toda la semana. Mi casa se queda solita. Qué emoción #Familia #Viaje #Playas'. Compartes fotos del aeropuerto con tu tarjeta de embarque visible. Se ve el código QR y tu nombre.", peligro: "Pérdida de privacidad", explicacion: "Estás AVISANDO a los delincuentes que tu casa estará vacía. El código QR de la tarjeta de embarque contiene tu información personal: nombre, fecha de nacimiento, número de pasaporte. Puede ser escaneado para suplantarte. Nunca compartas viajes en tiempo real.", medidas: "• Publica fotos de vacaciones CUANDO REGRESES.\n• NUNCA muestres tarjetas de embarque.\n• Configura tus redes como privadas.\n• No des pistas sobre tu ubicación actual.\n• Borra esa publicación." },
+        { nivel: 5, situacion: "⚠️ CASO #025: 'Hola, soy del departamento de recursos humanos de Claro. Te ganaste una beca completa para estudiar en la universidad. Solo necesitamos tu número de cédula y una foto del acta de nacimiento para confirmar tus datos'. Te llegó por WhatsApp de un número con lada de Nigeria (+234).", peligro: "Depredadores", explicacion: "Es una estafa de becas falsas. Claro no otorga becas por WhatsApp desde Nigeria. Quieren tus documentos para suplantar tu identidad. Con tu acta de nacimiento y cédula pueden hacer trámites legales a tu nombre, incluso vender tu identidad en el mercado negro.", medidas: "• Es 100% ESTAFA.\n• Bloquea el número.\n• Los números de Nigeria (+234) son conocidos por estafas.\n• Las becas reales tienen procesos formales.\n• No envíes documentos a desconocidos." },
+        // NIVEL 6 - STALKING Y VISHING (5 casos)
+        { nivel: 6, situacion: "⚠️ CASO #026: Hay un compañero de la escuela que te gustaba, pero lo rechazaste. Desde entonces, le da 'me gusta' a TODAS tus fotos, incluso a las de hace 4 años. Te escribe 30 mensajes si no le respondes. Sabes que te espera a la salida. Te da miedo.", peligro: "Stalking", explicacion: "ES STALKING. No es amor, es obsesión. El acosador busca controlarte mediante vigilancia constante. Esperarte a la salida es acoso físico. Muchos casos de feminicidio comenzaron con estas señales. NO es normal, NO es romántico. Es DELITO.", medidas: "• Dile CLARAMENTE 'NO QUIERO CONTACTO' (guarda el mensaje).\n• Guarda TODOS los mensajes y capturas.\n• DENUNCIA en la policía.\n• Informa en la entrada de la escuela.\n• No estás sola, pide ayuda." },
+        { nivel: 6, situacion: "⚠️ CASO #027: Recibes una llamada: 'Buenas, soy del departamento de fraude del Banco Caribe. Detectamos una compra de $35,000 en una tienda electrónica. Para cancelarla, necesito que me confirme su número de tarjeta, fecha de vencimiento y los 3 dígitos de atrás'. El número que llama es 809-XXX-XXXX.", peligro: "Vishing", explicacion: "Es VISHING (voice phishing). El banco NUNCA te llama para pedir datos de tarjeta, ellos ya los tienen. Los 3 dígitos de atrás (CVV) son la clave para compras online. Si los das, te vacían la cuenta. El número puede ser falso (spoofing).", medidas: "• CUELGA INMEDIATAMENTE.\n• NO des información.\n• Llama al número que está ATRÁS de tu tarjeta.\n• Los bancos no llaman para 'cancelar compras'.\n• Reporta el número al banco." },
+        { nivel: 6, situacion: "⚠️ CASO #028: Una cuenta anónima en Instagram te sigue y comenta en todas tus fotos: 'qué bonita sonrisa', 'feliz día', 'te ves hermosa'. No sabes quién es. Pero en los comentarios, menciona cosas privadas: dónde fuiste el fin de semana, qué comiste, con quién estabas.", peligro: "Stalking digital", explicacion: "Es STALKING DIGITAL. Alguien de tu entorno cercano (un conocido, un excompañero, un vecino) te está vigilando. Sabe detalles de tu vida diaria. No revelar su identidad es una táctica de control y poder. Te están ACOSANDO.", medidas: "• PON TU CUENTA EN PRIVADO.\n• No aceptes cuentas sospechosas.\n• Denuncia el perfil.\n• Si hay amenazas, DENUNCIA POLICIAL.\n• Puede ser alguien que conoces." },
+        { nivel: 6, situacion: "⚠️ CASO #029: 'Mamá, soy yo. Perdí mi celular, este es mi número nuevo. Guárdalo. ¿Puedes hacerme una transferencia? Tengo una emergencia, te explico después'. El mensaje llega por SMS a tu mamá. Tú estás sentado a su lado, con tu celular en la mano.", peligro: "Smishing", explicacion: "Es SMISHING familiar. Los estafadores envían mensajes genéricos a miles de números esperando que algún padre/madre responda. Si responden '¿Hijo?', el estafador dice 'Sí, mamá, necesito dinero URGENTE'. Explotan el instinto paternal. Tú estás bien, es una trampa.", medidas: "• Llama al número antiguo para verificar.\n• Establezcan una PALABRA CLAVE familiar.\n• Si piden dinero, SIEMPRE verificar.\n• Reporta el número como spam.\n• Enséñale a tu mamá esta estafa." },
+        { nivel: 6, situacion: "⚠️ CASO #030: Recibes una notificación de Facebook: 'Alguien intentó iniciar sesión en tu cuenta desde un dispositivo desconocido en Rusia. Si no fuiste tú, haz clic aquí para asegurar tu cuenta'. Haces clic, te pide tu contraseña actual y una nueva. Al día siguiente, no puedes entrar a tu cuenta.", peligro: "Suplantación de identidad", explicacion: "Te ROBARON la cuenta. El mensaje era falso, el enlace era phishing. Los atacantes cambiaron tu contraseña y correo de recuperación. Ahora pueden: publicar estafas en tu nombre, contactar a tus contactos pidiendo dinero, extorsionarte, vender tu cuenta.", medidas: "• Usa 'Olvidé mi contraseña'.\n• Si cambiaron el correo, contacta a soporte.\n• Sube tu cédula para recuperarla.\n• Activa VERIFICACIÓN EN DOS PASOS YA.\n• Revisa qué apps tienen acceso." },
+        // NIVEL 7 - BAITING Y SMISHING (5 casos)
+        { nivel: 7, situacion: "⚠️ CASO #031: Vas caminando por el parque central y ves un USB tirado en el suelo. Tiene una etiqueta escrita a mano: 'EXAMEN FINAL - INGENIERÍA 2025 - NO PERDER'. Piensas que alguien de la universidad lo perdió. Lo conectas a tu laptop para ver a quién pertenece.", peligro: "Baiting", explicacion: "Es BAITING. Los atacantes siembran USBs infectados en lugares públicos con etiquetas irresistibles. Al conectarlo, ejecutas un BadUSB: un malware que no necesita permisos. Puede instalar ransomware que encripte todos tus archivos y pida rescate. Tu trabajo final, tus fotos, todo.", medidas: "• NUNCA conectes dispositivos encontrados.\n• Entrégalo en seguridad/perdidos.\n• Deshabilita 'ejecución automática' de USBs.\n• Usa un 'USB muerto' (solo lectura) para probar.\n• Formatea el USB antes de abrirlo (si es necesario)." },
+        { nivel: 7, situacion: "⚠️ CASO #032: Te llega un SMS de 'INPOSDOM' (correos dominicanos): 'Su paquete internacional no pudo ser entregado por dirección incompleta. Confirme sus datos aquí: inposdom-rd.com/confirmar'. Estás esperando un pedido de Shein y te preocupa. La página se ve idéntica a la oficial.", peligro: "Smishing", explicacion: "Es SMISHING de paquetería. Saben que mucha gente compra online. La URL real de INPOSDOM es .gob.do, no .com. La página falsa roba tu dirección, teléfono y puede pedir 'tarifa de reenvío' con tarjeta de crédito. Pierdes dinero y datos.", medidas: "• NO hagas clic en enlaces de SMS.\n• Verifica el tracking en la web OFICIAL (inposdom.gob.do).\n• Los mensajes legítimos usan el número de seguimiento.\n• Reporta el SMS como spam.\n• Llama directamente a INPOSDOM." },
+        { nivel: 7, situacion: "⚠️ CASO #033: Encuentras un CD en el buzón de tu casa. No tiene remitente, solo una etiqueta con marcador negro: 'VIDEOS PRIVADOS - SOLO PARA TI'. Tienes curiosidad, lo pones en tu computadora. Aparece una ventana que dice 'Instalando actualizaciones...'.", peligro: "Baiting físico", explicacion: "Es BAITING dirigido. Alguien sabe dónde vives y te atacó específicamente. Los CD pueden tener autorun.inf que ejecuta malware sin preguntar. Podría ser ransomware, spyware o un backdoor. Esto no es un ataque al azar, es PERSONAL.", medidas: "• NO lo insertes.\n• Puede ser alguien que conoces.\n• Si tienes dudas, pide ayuda técnica.\n• Los CD casi no se usan; es altamente sospechoso.\n• Si puedes, identifica quién lo dejó." },
+        { nivel: 7, situacion: "⚠️ CASO #034: 'Su cuenta de WhatsApp será desactivada en 24 horas por violar términos de servicio. Para evitarlo, confirme su número y reenvíe el código que recibirá por SMS'. Te llega un código de 6 dígitos. Si lo reenvías, pierdes tu cuenta.", peligro: "Robo de cuenta WhatsApp", explicacion: "Te están ROBANDO WhatsApp. El código que te llega es el de verificación de WhatsApp. Al dárselo, ellos registran tu número en otro teléfono y tú pierdes el acceso. Luego pedirán dinero a tus contactos: 'Hola, ¿me prestas $2,000? Tengo una emergencia'.", medidas: "• NUNCA compartas el código de verificación.\n• Activa verificación en dos pasos (PIN).\n• Si pierdes acceso, reclama con tu operador.\n• Avisa a tus contactos si te roban la cuenta.\n• WhatsApp no desactiva cuentas por SMS." },
+        { nivel: 7, situacion: "⚠️ CASO #035: Llaman a tu abuela: 'Abuelita, soy yo, tu nieto. Tuve un accidente en la moto. Estoy en el hospital. Necesito $15,000 para la emergencia. Por favor, no le digas a mis padres que se van a preocupar mucho. Deposita aquí: cuenta 960-123456-8'. La voz se parece a la tuya.", peligro: "Ingeniería social", explicacion: "Es INGENIERÍA SOCIAL. Los estafadores obtienen información familiar de redes sociales: nombres, fotos, relaciones, incluso grabaciones de voz. Explotan el vínculo emocional y la urgencia. La abuela, angustiada, no piensa en verificar. Es muy común en adultos mayores.", medidas: "• Establezcan una PALABRA CLAVE familiar.\n• Siempre verificar llamando al número REAL.\n• No dar información por teléfono.\n• Si piden dinero sin verificar, es ESTAFA.\n• Enséñale a tus abuelos esta estafa." },
+        // NIVEL 8 - LEY 53-07 Y DELITOS (5 casos)
+        { nivel: 8, situacion: "⚠️ CASO #036: Un exempleado de una clínica privada, despedido hace 2 semanas, accede al sistema de historiales médicos usando la contraseña de una doctora que nunca la cambió. Lee expedientes de pacientes famosos y vende la información a revistas de farándula.", peligro: "Ley 53-07", explicacion: "Violación de datos médicos y acceso ilegal. Ley 53-07, Artículo 5: 'Acceso ilícito a sistemas informáticos' conlleva prisión de 3 meses a 2 años. Además, viola el secreto profesional y la Ley de Salud. Los datos médicos son EXTREMADAMENTE sensibles.", medidas: "• Denuncia penal ante la Procuraduría.\n• La clínica debe auditar accesos.\n• Cambiar todas las contraseñas.\n• Implementar 2FA.\n• Los pacientes deben ser notificados." },
+        { nivel: 8, situacion: "⚠️ CASO #037: Alguien creó un perfil falso en Instagram con tus fotos, tu nombre completo y tu ciudad. El perfil está pidiendo dinero a tus contactos: 'Hola, estoy en el hospital con COVID, necesito $5,000 para medicinas. Transferencia al 809-555-XXXX'. Tu tía ya depositó.", peligro: "Suplantación de identidad", explicacion: "Es SUPLANTACIÓN DE IDENTIDAD con fines económicos. Ley 53-07, Artículo 11: sanciona la suplantación con prisión de 3 meses a 2 años. El delincuente usa tu imagen y tus relaciones para estafar a las personas que te aman. No solo es robo, es TRAICIÓN digital.", medidas: "• Denuncia en el Ministerio Público.\n• Reporta el perfil como suplantación.\n• Avisa a TODOS tus contactos.\n• Presenta capturas del perfil falso.\n• Si estafaron a alguien, es robo agravado." },
+        { nivel: 8, situacion: "⚠️ CASO #038: Un técnico informático del Colegio de Ingenieros modifica las notas de un amigo en el sistema académico. Le cambia calificaciones reprobadas por aprobadas. El amigo le pagó $10,000. Nadie lo descubrió por 3 meses.", peligro: "Sabotaje informático", explicacion: "Es SABOTAJE INFORMÁTICO y falsificación de documentos. Ley 53-07, Artículo 6: 'Alteración de datos' conlleva prisión de 3 meses a 3 años. Modificar registros académicos es DELITO, aunque sea un amigo. El técnico y el beneficiario son responsables.", medidas: "• Denuncia anónima.\n• Auditoría forense del sistema.\n• El colegio debe demandar.\n• Las notas modificadas no son válidas.\n• Implementar registro de accesos." },
+        { nivel: 8, situacion: "⚠️ CASO #039: Un adolescente de 16 años crea un programa que, al ejecutarse, muestra pornografía infantil que descargó de la dark web. Lo comparte en un grupo de Telegram 'solo para amigos'. No cree que sea delito porque 'es solo para reírse'.", peligro: "Ciberdelincuencia", explicacion: "ES DELITO GRAVE. Poseer y distribuir pornografía infantil es un crimen internacional, aunque seas menor. Ley 53-07, Artículo 15: penas de 3 a 10 años de prisión. La ignorancia de la ley NO excusa. Las autoridades tienen unidades especializadas en cibercrimen.", medidas: "• NO descargues NI compartas.\n• Si conoces a alguien que lo hace, DENUNCIA.\n• Es material de víctimas reales.\n• Las consecuencias son de por vida.\n• Busca ayuda psicológica." },
+        { nivel: 8, situacion: "⚠️ CASO #040: Un empleado de una telefónica vende a estafadores los registros de llamadas y mensajes de clientes específicos. Los estafadores usan esa información para llamar haciéndose pasar por el banco, con datos reales de los movimientos de la víctima.", peligro: "Filtración de datos", explicacion: "Es FILTRACIÓN DE DATOS con amenaza interna (insider threat). Ley 53-07, Artículo 10: 'Violación a la intimidad y datos personales'. El empleado y la empresa son responsables solidarios. Los estafadores usan datos reales para que el engaño sea más creíble.", medidas: "• Las empresas DEBEN auditar accesos.\n• Los empleados firman confidencialidad.\n• Los clientes pueden demandar.\n• Denuncia ante el ICT y la policía.\n• Implementar principio de mínimo privilegio." }
+    ];
+
+    // ===== VARIABLES DE JUEGO =====
+    let currentProfile = null;
+    let currentPlayer = "";
+    let currentLevel = 1;
+    let score = 0;
+    let attemptsLeft = 3;
+    let usedScenarios = [];
+    let currentScenario = null;
+    let canAdvance = false;
+    let gameCompleted = false;
+    let timerInterval = null;
+    let timeLeft = 0;
+    let answerLocked = false;
+
+    // ===== FUNCIONES DE SELECCIÓN DE PERFIL =====
+    window.selectProfile = function(profileType) {
+        document.querySelectorAll('.profile-card').forEach(card => card.classList.remove('selected'));
+        let profileCard;
+        if (profileType === 'child') profileCard = document.getElementById('profileChild');
+        if (profileType === 'student') profileCard = document.getElementById('profileStudent');
+        if (profileType === 'parent') profileCard = document.getElementById('profileParent');
+        if (profileType === 'teacher') profileCard = document.getElementById('profileTeacher');
+        profileCard.classList.add('selected');
+        currentProfile = PERFILES[profileType];
+        document.getElementById('startGameBtn').disabled = false;
+    };
+
+    // ===== SONIDOS =====
+    function playSound(type) {
+        try {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') { audioCtx.resume().then(() => playSound(type)); return; }
+            const osc = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.connect(gainNode).connect(audioCtx.destination);
+            if (type === 'coin') {
+                osc.frequency.value = 850;
+                gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
+                osc.start(); osc.stop(audioCtx.currentTime + 0.2);
+                setTimeout(() => {
+                    const osc2 = audioCtx.createOscillator(); osc2.frequency.value = 1250;
+                    const gain2 = audioCtx.createGain(); gain2.gain.setValueAtTime(0.12, audioCtx.currentTime);
+                    gain2.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+                    osc2.connect(gain2).connect(audioCtx.destination);
+                    osc2.start(); osc2.stop(audioCtx.currentTime + 0.15);
+                }, 130);
+            } else {
+                osc.frequency.value = 200;
+                gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+                osc.start(); osc.stop(audioCtx.currentTime + 0.3);
+                osc.frequency.setValueAtTime(170, audioCtx.currentTime + 0.1);
+            }
+        } catch (e) {}
+    }
+
+    // ===== FUNCIONES DE UI =====
+    function updateUI() {
+        document.getElementById('playerNameDisplay').innerHTML = `👤 ${currentPlayer || 'Detective'}`;
+        document.getElementById('scoreDisplay').innerHTML = `💰 ${score} pts`;
+        const hearts = attemptsLeft === 3 ? '❤️❤️❤️' : attemptsLeft === 2 ? '❤️❤️🖤' : attemptsLeft === 1 ? '❤️🖤🖤' : '🖤🖤🖤';
+        document.getElementById('livesDisplay').innerHTML = hearts;
+        document.getElementById('levelDisplay').innerText = `NIVEL ${currentLevel}/8`;
+    }
+
+    function fullReset() {
+        currentLevel = 1; score = 0; attemptsLeft = 3; usedScenarios = []; canAdvance = false; gameCompleted = false; answerLocked = false;
+        if (timerInterval) clearInterval(timerInterval);
+        document.getElementById('nextLevelBtn').disabled = true;
+        document.getElementById('certificateContainer').style.display = 'none';
+        updateUI();
+    }
+
+    function mostrarInfoSeguridad(caso) {
+        if (!caso) return;
+        document.getElementById('peligroNombre').innerHTML = caso.peligro;
+        document.getElementById('explicacionCaso').innerHTML = caso.explicacion;
+        let medidas = caso.medidas.split('\n').map(m => `<li>${m.replace('•', '✓')}</li>`).join('');
+        document.getElementById('medidasLista').innerHTML = medidas;
+    }
+
+    function generarDistractores(peligroCorrecto) {
+        const todosPeligros = [
+            "Phishing", "Fake News", "Grooming", "Sexting", "Ciberacoso", 
+            "Adicción a redes sociales", "Adicción a videojuegos", "Malware", 
+            "Estafa", "Estafa laboral", "Scareware", "Pérdida de privacidad", 
+            "Depredadores", "Exposición de datos", "Stalking", "Stalking digital",
+            "Vishing", "Suplantación de identidad", "Smishing", "Baiting",
+            "Baiting físico", "Robo de cuenta WhatsApp", "Ingeniería social",
+            "Ley 53-07", "Sabotaje informático", "Ciberdelincuencia", "Filtración de datos"
+        ];
+        let disponibles = todosPeligros.filter(p => p !== peligroCorrecto);
+        let distractores = [];
+        for (let i = 0; i < 3; i++) {
+            let randomIndex = Math.floor(Math.random() * disponibles.length);
+            distractores.push(disponibles[randomIndex]);
+            disponibles.splice(randomIndex, 1);
+        }
+        return [peligroCorrecto, ...distractores].sort(() => 0.5 - Math.random());
+    }
+
+    function iniciarTemporizador() {
+        if (!currentProfile) return;
+        timeLeft = currentProfile.tiempoMaximo;
+        answerLocked = false;
+        document.getElementById('timerDisplay').innerHTML = `⏱️ ${timeLeft}s`;
+        document.getElementById('pointsMultiplier').innerHTML = `🎯 ${currentProfile.puntosBase} pts`;
+        document.getElementById('profileBadge').innerHTML = `${currentProfile.icono} ${currentProfile.nombre}`;
+        const timerBar = document.getElementById('timerBar');
+        timerBar.style.width = '100%';
+        timerBar.className = 'timer-bar';
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+            if (answerLocked || !currentScenario || canAdvance) return;
+            timeLeft--;
+            document.getElementById('timerDisplay').innerHTML = `⏱️ ${timeLeft}s`;
+            let porcentaje = (timeLeft / currentProfile.tiempoMaximo) * 100;
+            timerBar.style.width = `${porcentaje}%`;
+            if (porcentaje > 50) timerBar.className = 'timer-bar';
+            else if (porcentaje > 25) timerBar.className = 'timer-bar warning';
+            else timerBar.className = 'timer-bar danger';
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                timerBar.style.width = '0%';
+                document.getElementById('timerDisplay').innerHTML = `⏱️ 0s ¡TIEMPO!`;
+                manejarTiempoAgotado();
+            }
+        }, 1000);
+    }
+
+    function manejarTiempoAgotado() {
+        if (answerLocked || !currentScenario || canAdvance) return;
+        answerLocked = true;
+        playSound('fail');
+        attemptsLeft--;
+        score = Math.max(0, score - 25);
+        updateUI();
+        document.getElementById('feedbackMessage').innerHTML = `⏰ ¡TIEMPO AGOTADO! -25 pts. Intentos: ${attemptsLeft}`;
+        document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true);
+        if (attemptsLeft <= 0) {
+            document.getElementById('feedbackMessage').innerHTML += ' 🔁 Reiniciando...';
+            setTimeout(() => { fullReset(); loadScenario(); }, 1500);
+        }
+    }
+
+    function loadScenario() {
+        if (!currentProfile) return;
+        if (currentLevel > 8) currentLevel = 8;
+        let disponibles = casosDB.filter(c => c.nivel === currentLevel && !usedScenarios.includes(casosDB.indexOf(c)));
+        if (disponibles.length === 0) {
+            let reciclados = casosDB.filter(c => c.nivel === currentLevel);
+            currentScenario = reciclados[Math.floor(Math.random() * reciclados.length)];
+        } else {
+            let random = disponibles[Math.floor(Math.random() * disponibles.length)];
+            let idx = casosDB.indexOf(random);
+            usedScenarios.push(idx);
+            currentScenario = random;
+        }
+        document.getElementById('scenarioMessage').innerText = currentScenario.situacion;
+        let opciones = generarDistractores(currentScenario.peligro);
+        let optionsDiv = document.getElementById('optionsContainer');
+        optionsDiv.innerHTML = '';
+        opciones.forEach(op => {
+            let btn = document.createElement('button');
+            btn.classList.add('option-btn');
+            btn.innerText = op.toUpperCase();
+            btn.onclick = () => handleAnswer(op, currentScenario.peligro);
+            optionsDiv.appendChild(btn);
+        });
+        document.getElementById('feedbackMessage').innerText = '🔬 Analiza el caso y selecciona el peligro';
+        canAdvance = false; answerLocked = false;
+        document.getElementById('nextLevelBtn').disabled = true;
+        mostrarInfoSeguridad(currentScenario);
+        iniciarTemporizador();
+    }
+
+    function handleAnswer(selected, correct) {
+        if (answerLocked || attemptsLeft <= 0 || canAdvance) return;
+        answerLocked = true;
+        clearInterval(timerInterval);
+        if (selected === correct) {
+            let tiempoRestante = Math.max(0, timeLeft);
+            let bonusTiempo = Math.floor(tiempoRestante * (currentProfile.puntosBase / 20));
+            let puntosGanados = currentProfile.puntosBase + bonusTiempo;
+            playSound('coin'); 
+            score += puntosGanados; 
+            updateUI();
+            document.getElementById('feedbackMessage').innerHTML = `🎯 ¡CORRECTO! +${puntosGanados} pts`;
+            canAdvance = true; 
+            document.getElementById('nextLevelBtn').disabled = false;
+            mostrarInfoSeguridad(currentScenario);
+            if (currentLevel === 8 && !gameCompleted) {
+                gameCompleted = true;
+                document.getElementById('certificatePlayerName').innerText = currentPlayer.toUpperCase();
+                document.getElementById('certificateProfile').innerText = `Perfil: ${currentProfile.nombre}`;
+                document.getElementById('certificateContainer').style.display = 'block';
+            }
+        } else {
+            playSound('fail'); 
+            attemptsLeft--; 
+            let penalizacion = Math.floor(currentProfile.puntosBase * 0.3);
+            score = Math.max(0, score - penalizacion); 
+            updateUI();
+            document.getElementById('feedbackMessage').innerHTML = `❌ INCORRECTO. Era: ${correct}. -${penalizacion} pts`;
+            let casoCorrecto = casosDB.find(c => c.peligro === correct && c.nivel === currentLevel) || currentScenario;
+            mostrarInfoSeguridad(casoCorrecto);
+            if (attemptsLeft <= 0) {
+                document.getElementById('feedbackMessage').innerHTML += ' 🔁 Reiniciando...';
+                setTimeout(() => { fullReset(); loadScenario(); }, 1500);
+            }
+        }
+        document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true);
+    }
+
+    function nextLevel() {
+        if (!canAdvance) { alert('Debes responder correctamente primero'); return; }
+        if (currentLevel < 8) currentLevel++;
+        else document.getElementById('feedbackMessage').innerHTML = '🏆 ¡COMPLETASTE LOS 40 CASOS!';
+        canAdvance = false;
+        document.getElementById('nextLevelBtn').disabled = true;
+        attemptsLeft = 3;
+        updateUI();
+        loadScenario();
+    }
+
+    // ===== EVENTOS =====
+    window.onload = function() {
+        const welcome = document.getElementById('welcomeScreen');
+        const gameplay = document.getElementById('gameplayScreen');
+        const startBtn = document.getElementById('startGameBtn');
+        const nextBtn = document.getElementById('nextLevelBtn');
+        const restartBtn = document.getElementById('restartGameBtn');
+        const backBtn = document.getElementById('backToWelcomeBtn');
+        const nameInput = document.getElementById('playerName');
+        const teacher = document.getElementById('teacherEffect');
+
+        teacher.addEventListener('click', function() {
+            alert('🧑‍🏫 Ing. Emilio Almonte\n"Protegiendo a nuestros estudiantes en el mundo digital"');
+        });
+
+        startBtn.addEventListener('click', function() {
+            if (!nameInput.value.trim()) { alert('¡Ingresa tu nombre!'); return; }
+            if (!currentProfile) { alert('¡Selecciona un perfil!'); return; }
+            currentPlayer = nameInput.value.trim();
+            fullReset();
+            welcome.style.display = 'none';
+            gameplay.style.display = 'block';
+            loadScenario();
+        });
+
+        nextBtn.addEventListener('click', nextLevel);
+        restartBtn.addEventListener('click', function() { if (currentProfile) { fullReset(); loadScenario(); } });
+        backBtn.addEventListener('click', function() { 
+            welcome.style.display = 'flex'; 
+            gameplay.style.display = 'none'; 
+            fullReset();
+            currentProfile = null;
+            document.querySelectorAll('.profile-card').forEach(card => card.classList.remove('selected'));
+            document.getElementById('startGameBtn').disabled = true;
+        });
+        nameInput.addEventListener('keypress', e => { if (e.key === 'Enter' && !startBtn.disabled) startBtn.click(); });
+        fullReset();
+    };
+</script>
+</body>
+</html>
