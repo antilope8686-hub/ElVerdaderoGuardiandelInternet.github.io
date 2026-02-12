@@ -1,0 +1,1 @@
+¡Potencia tu seguridad digital! En la Semana del Internet Seguro, el CEFODIPF presenta el simulador creado por el Ing. Emilio Almonte. Mediante gamificación, esta herramienta transforma retos de ciberseguridad en una experiencia práctica y divertida. ¡Aprende a protegerte de amenazas reales y domina la red con destreza! 🛡️💻
